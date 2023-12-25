@@ -1,0 +1,112 @@
+@import "../vars";
+@import "../mixins";
+
+.all-events {
+  margin: 35px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 35px;
+    width: 100%;
+  }
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-between;
+
+    padding: 25px;
+    border-radius: 25px;
+    border: 1px solid #b7bac0;
+
+    &-main {
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 15px;
+    }
+
+    &-name {
+      font-size: 26px;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 2.86px;
+      margin-bottom: 10px;
+    }
+    &-date {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 5px;
+    }
+    &-location {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+    }
+    &-img {
+      height: 75px;
+      width: auto;
+      margin-bottom: 15px;
+    }
+
+    &-secondary {
+      width: 75%;
+      display: flex;
+      justify-content: space-between;
+      &-item {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-self: center;
+        width: 25%;
+        gap: 20px;
+      }
+    }
+    &-title {
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+    }
+    &-value {
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: 2.86px;
+      &:hover{
+        color: $primaryColor;
+      }
+    }
+    &-link {
+      color: $primaryColor;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: 2.86px;
+    }
+    &-divider {
+      border-left: 2px solid #b7bac0;
+      height: 115px; // Вы можете установить высоту по вашему выбору
+      margin: 0 8px;
+    }
+
+    &-icons {
+      top: 20px;
+      right: 20px;
+      position: absolute;
+      display: flex;
+      gap: 15px;
+    }
+    &-icon {
+      cursor: pointer;
+      &:hover {
+        * {
+          fill: $primaryColor;
+        }
+      }
+    }
+  }
+}

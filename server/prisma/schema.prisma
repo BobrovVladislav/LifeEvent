@@ -1,0 +1,54 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model users {
+  id       Int    @id @default(autoincrement())
+  username String
+  email    String @unique
+  password String
+  events   Event[]
+}
+
+model Event {
+  id          Int      @id @default(autoincrement())
+  name        String
+  type   String   // Например, "День рождения", "Свадьба", "Корпоратив", и т. д.
+  location    String
+  date        DateTime
+  guests      Guest[] // Связь с моделью для списка гостей
+  program     ProgramItem[] // Связь с моделью для пунктов программы
+  budget      BudgetItem[]  // Связь с моделью для статей расхода бюджета
+  organizer   users    @relation(fields: [organizerID], references: [id])
+  organizerID Int
+}
+
+model Guest {
+  id         Int      @id @default(autoincrement())
+  fullName       String
+  age        String
+  eventID    Int
+  event      Event    @relation(fields: [eventID], references: [id])
+}
+
+model ProgramItem {
+  id       Int      @id @default(autoincrement())
+  name     String
+  time     DateTime
+  order    Int      // Номер пункта программы
+  eventID  Int
+  event    Event    @relation(fields: [eventID], references: [id])
+}
+
+model BudgetItem {
+  id          Int      @id @default(autoincrement())
+  expense String
+  cost        Float
+  eventID     Int
+  event       Event    @relation(fields: [eventID], references: [id])
+}
