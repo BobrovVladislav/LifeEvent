@@ -17,6 +17,7 @@
     @include mobile {
       padding: 25px 25px;
       flex-direction: column-reverse;
+      align-items: center;
     }
   }
   &__main {

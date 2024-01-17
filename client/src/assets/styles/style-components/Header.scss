@@ -2,8 +2,11 @@
 @import "../mixins";
 
 .header {
-  border-bottom: 2px solid #ebebeb;
+  position: sticky;
+  top: 0;
   background: #fff;
+  border-bottom: 2px solid #ebebeb;
+  z-index: 9999;
   &__inner {
     display: flex;
     padding: 25px 0;
@@ -14,22 +17,23 @@
     }
     @include tablet {
       padding: 15px 0;
-      nav {
-        display: none;
-      }
     }
     @include mobile {
-      flex-direction: column;
       padding: 10px 0;
-      nav {
-        display: none;
-      }
     }
   }
   &__logo {
     font-family: "Monotype Corsiva", sans-serif;
     font-size: 36px;
     font-weight: 400;
+    @include tablet {
+      margin-right: auto;
+      margin-left: auto;
+    }
+    @include mobile {
+      margin-right: auto;
+      margin-left: auto;
+    }
     &-color {
       font-family: "Monotype Corsiva", sans-serif;
       color: $primaryColor;
@@ -39,6 +43,12 @@
     display: flex;
     align-items: center;
     gap: 25px;
+    @include tablet {
+      display: none;
+    }
+    @include mobile {
+      display: none;
+    }
     &-item {
       position: relative;
       display: flex;
@@ -110,5 +120,82 @@
     @include laptop {
       gap: 20px;
     }
+  }
+  &__mobile {
+    position: relative;
+    display: none;
+    padding: 5px 10px;
+    background-color: $primaryColor;
+    color: white;
+    border-radius: 25%;
+    margin-right: 15px;
+    margin-left: auto;
+    @include tablet {
+      display: flex;
+    }
+    @include mobile {
+      display: flex;
+    }
+    &-menu {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $primaryColor; // Замените на ваш цвет фона
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      @include tablet {
+        top: 72px;
+      }
+      @include mobile {
+        top: 62px;
+      }
+    }
+  }
+
+  .header__mobile-burger,
+  .header__mobile-close {
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .header__mobile-burger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white; // Измените цвет по вашему желанию
+    margin: 4px 0;
+    transition: 0.4s;
+  }
+
+  .header__mobile-close .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white; // Измените цвет по вашему желанию
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  .header__mobile-burger.open .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .header__mobile-burger.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__mobile-burger.open .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .header__mobile-close .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .header__mobile-close .bar:nth-child(2) {
+    transform: rotate(45deg) translate(-5px, -6px);
   }
 }

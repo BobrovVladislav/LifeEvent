@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
-import { Link, Outlet, useLocation, useParams, useNavigate } from 'react-router-dom'
+import { useEvent } from '../context/EventContext';
+import { Link, Outlet, useLocation, useParams } from 'react-router-dom'
 
 import { ReactComponent as IconWedding } from "../assets/images/icon-wedding.svg";
 import { ReactComponent as IconBirthday } from "../assets/images/icon-birthday.svg";
@@ -12,13 +13,15 @@ import { ReactComponent as IconEdit } from "../assets/images/icon-edit.svg";
 import "../assets/styles/style-pages/event-detail-page.scss";
 
 function EventDetailPage() {
-    const { eventID } = useParams();
-    const [event, setEvent] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    const navigate = useNavigate();
-    const location = useLocation();
+    const { getEvent, event, loading } = useEvent();
     const { jwt } = useAuth();
+    const { eventID } = useParams();
+
+    const location = useLocation();
+
+    useEffect(() => {
+        getEvent(eventID, jwt);
+    }, [eventID]);
 
     const getImageUrl = (eventType) => {
         // возвращать URL изображения в зависимости от типа мероприятия
@@ -33,32 +36,6 @@ function EventDetailPage() {
                 return "/"; // Изображение по умолчанию
         }
     };
-
-    useEffect(() => {
-        const fetchEvent = async () => {
-            try {
-                const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/events/${eventID}`, {
-                    method: "GET",
-                    headers: {
-                        Authorization: `Bearer ${jwt}`,
-                    },
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    setEvent(data.event);
-                } else {
-                    console.error("Ошибка при получении мероприятия");
-                }
-            } catch (error) {
-                console.error("Ошибка при отправке запроса на получение мероприятия", error);
-            } finally {
-                setLoading(false);
-            }
-        };
-
-        fetchEvent();
-    }, [eventID]);
 
     if (loading) {
         return <p>Загрузка...</p>;
@@ -105,7 +82,7 @@ function EventDetailPage() {
                     <Outlet />
                 </div>
             </div>
-        </div>
+        </div >
     );
 }
 

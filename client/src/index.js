@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from "./context/AuthContext.js";
+import { EventProvider } from "./context/EventContext.js";
 import './assets/styles/globals.scss';
 import App from './App';
 
@@ -10,7 +11,9 @@ root.render(
   <React.StrictMode>
     <BrowserRouter>
       <AuthProvider>
-        <App />
+        <EventProvider>
+          <App />
+        </EventProvider>
       </AuthProvider>
     </BrowserRouter>
   </React.StrictMode>
