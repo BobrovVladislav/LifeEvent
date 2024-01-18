@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -10,6 +10,20 @@ export const Header = () => {
   const { jwt, user, logout } = useAuth();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  // Применение стилей к body при изменении isMenuOpen
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'visible';
+    }
+
+    // Очистка эффекта
+    return () => {
+      document.body.style.overflow = 'visible';
+    };
+  }, [isMenuOpen]);
+
   const handleLogout = async () => {
     try {
       toast.success("Вы вышли из системы.");
@@ -19,6 +33,7 @@ export const Header = () => {
       toast.error("Произошла ошибка при выходе из системы.");
     }
   };
+
   return (
     <header className="header">
       <div className="container">
@@ -73,19 +88,23 @@ export const Header = () => {
               {isMenuOpen && (
                 <ul className="header__mobile-menu">
                   {jwt && user ? (
-                    <>
-                      <li className="mobile-menu__item">
+                    <div className="header__mobile-inner">
+                      <li className="header__mobile-item header__mobile-item--name">
+                        {user.username}
+                      </li>
+                      <hr className="header__mobile-divider" />
+                      <li className="header__mobile-item">
                         <Link to="/events/create">Создать</Link>
                       </li>
-                      <li className="mobile-menu__item">
+                      <li className="header__mobile-item">
                         <Link to="/events/all">Мероприятия</Link>
                       </li>
-                      <li className="mobile-menu__item" onClick={handleLogout}>
+                      <li className="header__mobile-item" onClick={handleLogout}>
                         Выйти
                       </li>
-                    </>
+                    </div>
                   ) : (
-                    <li className="mobile-menu__item">
+                    <li className="header__mobile-item">
                       <Link to="/login">Войти</Link>
                     </li>
                   )}

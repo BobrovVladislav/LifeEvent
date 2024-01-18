@@ -6,15 +6,21 @@ import { EventProvider } from "./context/EventContext.js";
 import './assets/styles/globals.scss';
 import App from './App';
 
+const CombinedProvider = ({ children }) => (
+  <AuthProvider>
+    <EventProvider>
+      {children}
+    </EventProvider>
+  </AuthProvider>
+);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
-      <AuthProvider>
-        <EventProvider>
-          <App />
-        </EventProvider>
-      </AuthProvider>
+      <CombinedProvider>
+        <App />
+      </CombinedProvider>
     </BrowserRouter>
   </React.StrictMode>
 );

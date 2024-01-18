@@ -81,8 +81,8 @@ const Program = () => {
     }
 
     return (
-        <div className="program__inner">
-            <div className="program__inputs">
+        <div className="event-detail__bottom-inner">
+            <div className="event-detail__bottom-inputs">
                 <input type="text"
                     className="modal__input"
                     placeholder="Введите пункт"
@@ -96,9 +96,9 @@ const Program = () => {
                     onChange={(e) => setNewProgramItem((prevItem) => ({ ...prevItem, time: e.target.value }))} />
                 <button className="main-button" onClick={handleAddItem}>Добавить</button>
             </div>
-            <div className="program__list">
+            <div className="event-detail__bottom-list">
                 <h3 className="program__list-title">ПРОГРАММА</h3>
-                <div className="program__list-items">
+                <div className="event-detail__bottom-list-items">
                     {updatedProgram
                         .slice() // Создает копию массива, чтобы не изменять оригинал
                         .sort((a, b) => a.time.localeCompare(b.time)) // Сортирует массив по полю time
@@ -106,7 +106,7 @@ const Program = () => {
                             <div key={index} className="program__list-item">
                                 <div className="program__list-item-order">{index + 1}</div>
                                 <div className="program__list-item-content">
-                                    <p className="program__list-item-name">{item.name}</p>
+                                    <div className="program__list-item-name">{item.name}</div>
                                     <div className="program__list-item-time">
                                         {item.time}
                                     </div>

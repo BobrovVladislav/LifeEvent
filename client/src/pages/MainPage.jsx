@@ -1,9 +1,11 @@
 import React from "react";
 
 import "../assets/styles/style-pages/main-page.scss";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import { useAuth } from "../context/AuthContext";
 
 function MainPage() {
+  const { jwt } = useAuth();
   return (
     <div>
       <section className="welcome">
@@ -19,7 +21,7 @@ function MainPage() {
               <p className="welcome__info-text">
                 Свадьбы, корпоративы, дни рождения. Неважно, <span>ЛайфИвент</span>  поможет вам создать мероприятия, которые вы больше нигде не встретите.
               </p>
-              <Link to="/events/create" className="main-button">Начать планирование</Link>
+              <Link to={jwt ? "/events/create" : "/login"} className="main-button">Начать планирование</Link>
             </div>
           </div>
         </div>
@@ -93,7 +95,7 @@ function MainPage() {
             <div className="banner__inner-content">
               <div className="banner__title">Давайте начнем готовить Ваше мероприятие!</div>
               <div className="banner__text">Начнем вашу подготовку мероприятия сегодня, превратив ваши мечты в замечательные моменты.</div>
-              <Link to="/events/create" className="main-button banner__button">Создать мероприятие</Link>
+              <Link to={jwt ? "/events/create" : "/login"} className="main-button banner__button">Создать мероприятие</Link>
             </div>
           </div>
         </div>

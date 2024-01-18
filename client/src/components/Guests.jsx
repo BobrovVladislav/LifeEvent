@@ -142,8 +142,8 @@ const Guests = () => {
     }
 
     return (
-        <div className="guests__inner">
-            <div className="guests__inputs">
+        <div className="event-detail__bottom-inner">
+            <div className="event-detail__bottom-inputs">
                 <input type="text"
                     className="modal__input"
                     placeholder="Введите ФИО"
@@ -157,7 +157,7 @@ const Guests = () => {
                     onChange={(e) => setNewGuest((prevItem) => ({ ...prevItem, email: e.target.value }))} />
                 <button className="main-button" onClick={handleAddItem}>Добавить</button>
             </div>
-            <div className="guests__list">
+            <div className="event-detail__bottom-list">
                 <div className="guests__list-controls">
                     <div className="guests__list-total">
                         {updatedGuests.length} <UnionIcon />
@@ -172,7 +172,7 @@ const Guests = () => {
                     </button>
                 </div>
 
-                <div className="guests__list-items">
+                <div className="event-detail__bottom-list-items">
                     {filteredGuests.length === 0 ? (
                         <div className="not-found">Гости не найдены</div>
                     ) : (

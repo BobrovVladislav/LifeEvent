@@ -121,11 +121,11 @@ const Budget = () => {
         return <p>Загрузка...</p>;
     }
     return (
-        <div className="budget__inner">
+        <div className="event-detail__bottom-inner">
             <div className="budget__inputs">
                 <input type="text"
                     className="modal__input"
-                    placeholder="Введите название расходов"
+                    placeholder="Название расходов"
                     name="titleBudget"
                     value={newBudgetItem.expense}
                     onChange={(e) => setNewBudgetItem((prevItem) => ({ ...prevItem, expense: e.target.value }))} />

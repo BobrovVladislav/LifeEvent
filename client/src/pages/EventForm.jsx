@@ -54,6 +54,9 @@ function EventForm() {
     useEffect(() => {
         const fetchEvent = async () => {
             try {
+                if (!eventID) {
+                    return;
+                }
                 const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/events/${eventID}`, {
                     method: "GET",
                     headers: {

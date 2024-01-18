@@ -72,7 +72,7 @@ function EventDetailPage() {
                             </div>
                         </div>
                         <Link to={`/events/${event.id}/update`} className="event-detail__main-icon">
-                            <IconEdit className="event-detail__main-icon-edit" /> Редактировать
+                            <IconEdit className="event-detail__main-icon-edit" /> <span className="event-detail__main-icon-text">Редактировать</span>
                         </Link>
                     </div>
                 </div>

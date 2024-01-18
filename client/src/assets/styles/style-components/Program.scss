@@ -2,37 +2,12 @@
 @import "../mixins";
 
 .program {
-  &__inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 50px;
-  }
-  &__inputs {
-    display: flex;
-    gap: 15px;
-  }
   &__list {
-    display: flex;
-    width: 50%;
-    padding: 25px;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 25px;
-    border-radius: 25px;
-    border: 1px solid #e4e7e9;
     &-title {
       font-size: 24px;
       font-weight: 400;
       line-height: 20px;
       text-transform: uppercase;
-    }
-    &-items {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 80%;
     }
     &-item {
       display: flex;
@@ -55,6 +30,17 @@
       &-name {
         font-size: 16px;
         font-weight: 500;
+        overflow-wrap: break-word;
+        max-width: 275px;
+        @include laptop {
+          max-width: 215px;
+        }
+        @include tablet {
+          max-width: 275px;
+        }
+        @include mobile {
+          max-width: 125px;
+        }
       }
       &-time {
         color: $primaryColor;
