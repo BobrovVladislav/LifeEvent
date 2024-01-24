@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import { useEvent } from "../context/EventContext";
 import { useAuth } from "../context/AuthContext";
+import { Loader } from "./Loader";
 
 import { ReactComponent as IconBasket } from "../assets/images/icon-basket.svg";
 import "../assets/styles/style-components/Budget.scss";
@@ -118,7 +119,7 @@ const Budget = () => {
     };
 
     if (loading) {
-        return <p>Загрузка...</p>;
+        return <Loader />
     }
     return (
         <div className="event-detail__bottom-inner">
@@ -148,20 +149,28 @@ const Budget = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {updatedBudget.map((item, index) => (
-                        <tr key={index} className="budget__table-row budget__table-item">
-                            <td className="budget__table-column">{item.expense}</td>
-                            <td className="budget__table-column">{item.cost} руб</td>
-                            <td className="budget__table-column">
-                                <IconBasket className="program__list-item-basket" onClick={() => handleDeleteItem(item)} />
-                            </td>
+                    {updatedBudget.length === 0 ? (
+                        <tr className="budget__table-row budget__table-item">
+                            <td colSpan="3" className="budget__table-column">Бюджет не сформирован</td>
                         </tr>
-                    ))}
-                    <tr className="budget__table-row budget__table-row--total">
-                        <td className="budget__table-column">ИТОГО</td>
-                        <td className="budget__table-column">{totalCost} руб</td>
-                        <td className="budget__table-column"></td>
-                    </tr>
+                    ) : (
+                        <>
+                            {updatedBudget.map((item, index) => (
+                                <tr key={index} className="budget__table-row budget__table-item">
+                                    <td className="budget__table-column">{item.expense}</td>
+                                    <td className="budget__table-column">{item.cost} руб</td>
+                                    <td className="budget__table-column">
+                                        <IconBasket className="program__list-item-basket" onClick={() => handleDeleteItem(item)} />
+                                    </td>
+                                </tr>
+                            ))}
+                            <tr className="budget__table-row budget__table-row--total">
+                                <td className="budget__table-column">ИТОГО</td>
+                                <td className="budget__table-column">{totalCost} руб</td>
+                                <td className="budget__table-column"></td>
+                            </tr>
+                        </>
+                    )}
                 </tbody>
             </table>
             <div className="program__button" onClick={handleSaveChanges}>

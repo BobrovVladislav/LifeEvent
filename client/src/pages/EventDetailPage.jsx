@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { useEvent } from '../context/EventContext';
 import { Link, Outlet, useLocation, useParams } from 'react-router-dom'
+import { Loader } from "../components/Loader";
 
 import { ReactComponent as IconWedding } from "../assets/images/icon-wedding.svg";
 import { ReactComponent as IconBirthday } from "../assets/images/icon-birthday.svg";
@@ -38,7 +39,7 @@ function EventDetailPage() {
     };
 
     if (loading) {
-        return <p>Загрузка...</p>;
+        return <Loader />
     }
 
     if (!event && !loading) {

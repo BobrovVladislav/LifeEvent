@@ -11,7 +11,8 @@ import EventDetailPage from "./pages/EventDetailPage.jsx";
 import Guests from "./components/Guests.jsx";
 import Program from "./components/Program.jsx";
 import Budget from "./components/Budget.jsx";
-
+import AdminPage from "./pages/AdminPage.jsx";
+import { Loader } from "./components/Loader.jsx";
 
 import { useAuth } from "./context/AuthContext";
 
@@ -19,11 +20,16 @@ import { ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css'
 
 function App() {
-  const { jwt } = useAuth();
+  const { jwt, user, loading } = useAuth();
+
+  if (jwt && loading) {
+    return <Loader />
+  }
+
   return (
     <Layout>
       <Routes>
-        {jwt ? (
+        {jwt && user ? (
           <>
             <Route path="/events/all" element={<EventsPage />} />
             <Route path="/events/create" element={<EventForm />} />
@@ -33,6 +39,9 @@ function App() {
               <Route path="/events/:eventID/budget" element={<Budget />} />
             </Route>
             <Route path="/events/:eventID/update" element={<EventForm />} />
+            {user.role === "admin" && (
+              <Route path="/admin" element={<AdminPage />} />
+            )}
           </>
         ) : (
           <Route element={<AuthForm />}>

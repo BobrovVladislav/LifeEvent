@@ -8,10 +8,12 @@ export const AuthProvider = ({ children }) => {
     return localStorage.getItem("jwt") || null;
   });
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     // Получение данных пользователя
     const getUser = async () => {
+      setLoading(true);
       try {
         const response = await fetch(`${process.env.REACT_APP_SERVER_URL}/user/me`, {
           method: "GET",
@@ -32,10 +34,13 @@ export const AuthProvider = ({ children }) => {
           id: data.user.id,
           username: data.user.username,
           email: data.user.email,
+          role: data.user.role
         });
       } catch (error) {
         console.error('Error fetching user data:', error.message);
         throw error;
+      } finally {
+        setLoading(false);
       }
     };
     // Обновление localStorage при изменении токена
@@ -49,17 +54,15 @@ export const AuthProvider = ({ children }) => {
   }, [jwt]);
 
   const login = async (token) => {
-    // Логика для входа
     setJwt(token);
   };
 
-  const logout = () => {
-    // Логика для выхода
+  const logout = () => {;
     setJwt(null);
   };
 
   return (
-    <AuthContext.Provider value={{ jwt, user, login, logout }}>
+    <AuthContext.Provider value={{ jwt, user, login, logout, loading }}>
       {children}
     </AuthContext.Provider>
   );

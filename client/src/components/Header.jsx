@@ -46,8 +46,13 @@ export const Header = () => {
               {jwt && user ? (
                 <li className="header__nav-item">
                   <UnionIcon className="header__nav-icon" /> <span className="header__nav-item-text">{user.username}</span>
-                  < div className="dropdown-menu">
+                  <div className="dropdown-menu">
                     <ul className="dropdown-menu__inner">
+                      {user.role === "admin" && (
+                        <Link to="/admin" className="dropdown-menu__item">
+                          Панель администратора
+                        </Link>
+                      )}
                       <Link to="/events/create" className="dropdown-menu__item">
                         Создать
                       </Link>
@@ -63,7 +68,6 @@ export const Header = () => {
                     </ul>
                   </div>
                 </li>
-
               ) : (
                 <Link to="/login" className="header__nav-item">
                   <UnionIcon className="header__nav-icon" /> <span className="header__nav-item-text">Войти</span>
@@ -93,6 +97,9 @@ export const Header = () => {
                         {user.username}
                       </li>
                       <hr className="header__mobile-divider" />
+                      <li className="header__mobile-item">
+                        <Link to="/admin">Панель администратора</Link>
+                      </li>
                       <li className="header__mobile-item">
                         <Link to="/events/create">Создать</Link>
                       </li>

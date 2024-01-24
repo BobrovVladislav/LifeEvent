@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { toast } from 'react-toastify';
 import { useEvent } from "../context/EventContext";
 import { useAuth } from "../context/AuthContext";
+import { Loader } from "./Loader";
 
 import { ReactComponent as IconBasket } from "../assets/images/icon-basket.svg";
 import "../assets/styles/style-components/Program.scss";
@@ -77,7 +78,7 @@ const Program = () => {
     };
 
     if (loading) {
-        return <p>Загрузка...</p>;
+        return <Loader />
     }
 
     return (
@@ -99,21 +100,23 @@ const Program = () => {
             <div className="event-detail__bottom-list">
                 <h3 className="program__list-title">ПРОГРАММА</h3>
                 <div className="event-detail__bottom-list-items">
-                    {updatedProgram
-                        .slice() // Создает копию массива, чтобы не изменять оригинал
-                        .sort((a, b) => a.time.localeCompare(b.time)) // Сортирует массив по полю time
-                        .map((item, index) => (
-                            <div key={index} className="program__list-item">
-                                <div className="program__list-item-order">{index + 1}</div>
-                                <div className="program__list-item-content">
-                                    <div className="program__list-item-name">{item.name}</div>
-                                    <div className="program__list-item-time">
-                                        {item.time}
+                    {updatedProgram.length === 0 ? (
+                        <div className="not-found">Программа не найдена</div>
+                    ) : (
+                        updatedProgram
+                            .slice()
+                            .sort((a, b) => a.time.localeCompare(b.time))
+                            .map((item, index) => (
+                                <div key={index} className="program__list-item">
+                                    <div className="program__list-item-order">{index + 1}</div>
+                                    <div className="program__list-item-content">
+                                        <div className="program__list-item-name">{item.name}</div>
+                                        <div className="program__list-item-time">{item.time}</div>
                                     </div>
+                                    <IconBasket className="program__list-item-basket" onClick={() => handleDeleteItem(item)} />
                                 </div>
-                                <IconBasket className="program__list-item-basket" onClick={() => handleDeleteItem(item)} />
-                            </div>
-                        ))}
+                            ))
+                    )}
                 </div>
             </div>
             <div className="program__button" onClick={handleSaveChanges}>

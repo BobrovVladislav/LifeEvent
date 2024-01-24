@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useAuth } from "../context/AuthContext";
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { Loader } from "../components/Loader";
 
 import { ReactComponent as IconWedding } from "../assets/images/icon-wedding.svg";
 import { ReactComponent as IconBirthday } from "../assets/images/icon-birthday.svg";
@@ -85,7 +86,7 @@ function EventsPage() {
         <h2 className="all-events__title">Мои мероприятия</h2>
         <div className="all-events__list">
           {loading ? (
-            <p>Загрузка...</p>
+            <Loader />
           ) : events !== null && events.length > 0 ? (
             events.map((event) => (
               <div key={event.id} className="all-events__item">
@@ -137,7 +138,7 @@ function EventsPage() {
               </div>
             ))
           ) : (
-            <p>Список мероприятий пуст</p>
+                <p style={{ textAlign: 'center', margin: '50px 0', fontSize: '22px' }}А>Список мероприятий пуст</p>
           )}
         </div>
         <Link to="/events/create" className="main-button">

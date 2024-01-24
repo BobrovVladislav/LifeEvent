@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { toast } from 'react-toastify';
 import { useEvent } from "../context/EventContext";
 import { useAuth } from "../context/AuthContext";
+import { Loader } from "./Loader";
 
 import { ReactComponent as IconInvite } from "../assets/images/icon-invite.svg";
 import { ReactComponent as UnionIcon } from "../assets/images/icon-union.svg";
@@ -138,7 +139,7 @@ const Guests = () => {
     };
 
     if (loading) {
-        return <p>Загрузка...</p>;
+        return <Loader />
     }
 
     return (

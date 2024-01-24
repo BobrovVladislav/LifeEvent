@@ -12,6 +12,7 @@ model users {
   username String
   email    String  @unique
   password String
+  role     String  @default("user")
   events   Event[]
 }
 
