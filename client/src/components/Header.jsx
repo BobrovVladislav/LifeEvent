@@ -97,9 +97,11 @@ export const Header = () => {
                         {user.username}
                       </li>
                       <hr className="header__mobile-divider" />
-                      <li className="header__mobile-item">
+                      {user.role === "admin" && (
+                        <li className="header__mobile-item">
                         <Link to="/admin">Панель администратора</Link>
-                      </li>
+                        </li>
+                      )}
                       <li className="header__mobile-item">
                         <Link to="/events/create">Создать</Link>
                       </li>

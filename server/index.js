@@ -13,7 +13,6 @@ app.use('/api', router)
 
 const start = async () => {
   try {
-    //проверка подключения к бд
     await prisma.$connect();
     app.listen(PORT, () => console.log(`Server started on port ${PORT}`))
   } catch (error) {

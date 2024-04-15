@@ -168,6 +168,11 @@ class UserController {
         return res.status(404).json({ error: 'Пользователь не найден' });
       }
 
+      // Проверяем, что у пользователя не роль "admin"
+      if (userToDelete.role === "admin") {
+        return res.status(403).json({ error: 'У вас нет разрешения на удаление админа' });
+      }
+
       // Удаляем пользователя и связанные с ним данные (события гости бюджеты программы)
       await prisma.users.delete({
         where: { id: parseInt(userId) },
