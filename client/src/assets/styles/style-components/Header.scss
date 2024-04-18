@@ -1,0 +1,217 @@
+@import "../vars";
+@import "../mixins";
+
+.header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 2px solid #ebebeb;
+  z-index: 9999;
+  &__inner {
+    display: flex;
+    padding: 25px 0;
+    justify-content: space-between;
+    align-items: center;
+    @include laptop {
+      padding: 20px 0;
+    }
+    @include tablet {
+      padding: 15px 0;
+    }
+    @include mobile {
+      padding: 10px 0;
+    }
+  }
+  &__logo {
+    font-family: "Monotype Corsiva", sans-serif;
+    font-size: 36px;
+    font-weight: 400;
+    @include tablet {
+      margin-right: auto;
+      margin-left: auto;
+    }
+    @include mobile {
+      margin-right: auto;
+      margin-left: auto;
+    }
+    &-color {
+      font-family: "Monotype Corsiva", sans-serif;
+      color: $primaryColor;
+    }
+  }
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    @include tablet {
+      display: none;
+    }
+    @include mobile {
+      display: none;
+    }
+    &-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      &-text {
+        font-size: 20px;
+        font-weight: 400;
+      }
+      &:hover {
+        .header__nav-item-text {
+          color: $primaryColor;
+          transition: fill 0.25s ease-in-out;
+        }
+        .header__nav-icon * {
+          fill: $primaryColor;
+          transition: fill 0.25s ease-in-out;
+        }
+        & .dropdown-menu {
+          visibility: visible;
+          opacity: 1;
+          transition: all 0.25s ease-out;
+        }
+      }
+      .dropdown-menu {
+        visibility: hidden;
+        opacity: 0;
+        padding: 15px 0 10px 10px;
+        position: absolute;
+        top: calc(100%);
+        right: 0;
+        margin: 0;
+        z-index: 1000;
+        &__inner {
+          min-width: 100px;
+          display: flex;
+          border-radius: 5px;
+          flex-direction: column;
+          list-style-type: none;
+          padding: 10px 25px;
+          background-color: #fff;
+          box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.25);
+        }
+        &::before {
+          content: "";
+          position: absolute;
+          top: 5px;
+          right: 5px;
+          width: 0;
+          height: 0;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-bottom: 10px solid #fff; // Цвет указателя
+          box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.1); /* Изменение тени здесь */
+        }
+
+        &__item {
+          padding: 10px 0;
+          font-weight: 400;
+          cursor: pointer;
+          font-size: 16px;
+          &:hover {
+            color: $primaryColor;
+            transition: color 0.25s ease-in-out;
+          }
+        }
+      }
+    }
+    @include laptop {
+      gap: 20px;
+    }
+  }
+  &__mobile {
+    position: relative;
+    display: none;
+    padding: 5px 10px;
+    background-color: $primaryColor;
+    color: white;
+    border-radius: 25%;
+    margin-right: 15px;
+    margin-left: auto;
+    @include tablet {
+      display: flex;
+    }
+    @include mobile {
+      display: flex;
+    }
+    &-menu {
+      position: fixed;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: $primaryColor; // Замените на ваш цвет фона
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      @include tablet {
+        top: 72px;
+      }
+      @include mobile {
+        top: 62px;
+      }
+    }
+    &-inner {
+      margin-top: 25px;
+    }
+    &-item {
+      text-align: center;
+      font-size: 24px;
+      color: white;
+      padding: 25px 0;
+      &--name {
+      }
+    }
+    &-divider {
+      width: 100%;
+      height: 1px;
+      background-color: #ccc;
+      margin: 8px 0;
+    }
+  }
+
+  .header__mobile-burger,
+  .header__mobile-close {
+    height: 30px;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+  }
+
+  .header__mobile-burger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white; // Измените цвет по вашему желанию
+    margin: 4px 0;
+    transition: 0.4s;
+  }
+
+  .header__mobile-close .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white; // Измените цвет по вашему желанию
+    margin: 6px 0;
+    transition: 0.4s;
+  }
+
+  .header__mobile-burger.open .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .header__mobile-burger.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .header__mobile-burger.open .bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+
+  .header__mobile-close .bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+
+  .header__mobile-close .bar:nth-child(2) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}

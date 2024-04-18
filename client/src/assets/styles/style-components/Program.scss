@@ -1,0 +1,63 @@
+@import "../vars";
+@import "../mixins";
+
+.program {
+  &__list {
+    &-title {
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 20px;
+      text-transform: uppercase;
+    }
+    &-item {
+      display: flex;
+
+      align-items: center;
+      padding: 10px 15px;
+      border-radius: 2px;
+      border: 1px solid #e4e7e9;
+      &-order {
+        font-family: Allison;
+        font-size: 50px;
+        font-weight: 400;
+      }
+      &-content {
+        margin-left: 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+      }
+      &-name {
+        font-size: 16px;
+        font-weight: 500;
+        overflow-wrap: break-word;
+        max-width: 275px;
+        @include laptop {
+          max-width: 215px;
+        }
+        @include tablet {
+          max-width: 275px;
+        }
+        @include mobile {
+          max-width: 125px;
+        }
+      }
+      &-time {
+        color: $primaryColor;
+
+        font-size: 14px;
+        font-weight: 500;
+      }
+      &-basket {
+        display: flex;
+        margin-left: auto;
+        cursor: pointer;
+        &:hover {
+          * {
+            fill: $primaryColor;
+          }
+        }
+      }
+    }
+  }
+}

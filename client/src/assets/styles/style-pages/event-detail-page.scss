@@ -1,0 +1,192 @@
+@import "../vars";
+@import "../mixins";
+
+.event-detail {
+  &__main {
+    background: #a91f13;
+    padding-top: 50px;
+    @include mobile {
+      padding-top: 25px;
+    }
+    &-inner {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 25px;
+      padding: 40px 30px 0 30px;
+      border-radius: 25px 25px 0px 0px;
+      background: #fff;
+      border: 1px solid #b7bac0;
+      @include mobile {
+        padding: 25px 15px 0 15px;
+        gap: 15px;
+      }
+    }
+    &-content {
+      margin-left: 5%;
+      display: flex;
+      gap: 75px;
+      align-items: center;
+      @include mobile {
+        justify-content: space-evenly;
+        margin: 0;
+        gap: 25px;
+      }
+    }
+    &-img {
+      height: 125px;
+      width: auto;
+    }
+    &-text {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 25px;
+      @include mobile {
+        gap: 15px;
+      }
+    }
+    &-title {
+      font-size: 36px;
+      font-style: italic;
+      font-weight: 500;
+      letter-spacing: 3.96px;
+      @include mobile {
+        margin-top: 5px;
+        font-size: 24px;
+        letter-spacing: normal;
+      }
+    }
+    &-subtitle {
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 3.08px;
+      text-transform: uppercase;
+      @include mobile {
+        font-size: 18px;
+        letter-spacing: normal;
+        text-align: center;
+      }
+    }
+    &-tabs {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      @include mobile {
+        gap: 10px;
+      }
+    }
+    &-tab {
+      display: flex;
+      gap: 10px;
+      padding: 10px 5px;
+      @include mobile {
+        gap: 5px;
+        align-items: center;
+      }
+
+      &-text {
+        color: #5f6c72;
+        font-size: 24px;
+        font-weight: 400;
+        text-transform: uppercase;
+        @include mobile {
+          font-size: 14px;
+        }
+      }
+      &--active {
+        border-bottom: 2px solid $primaryColor;
+        .event-detail__main-tab-text {
+          color: #222;
+        }
+        .event-detail__main-tab-icon * {
+          fill: $primaryColor;
+        }
+      }
+    }
+    &-icon {
+      position: absolute;
+      top: 25px;
+      right: 25px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      color: $primaryColor;
+      font-size: 16px;
+      font-weight: 400;
+      letter-spacing: 1.76px;
+      @include mobile {
+        top: 15px;
+        right: 15px;
+      }
+      &-edit {
+        height: 20px;
+
+        * {
+          fill: $primaryColor;
+        }
+      }
+      &-text {
+        @include mobile {
+          display: none;
+        }
+      }
+    }
+  }
+  &__bottom {
+    padding: 40px 30px;
+    border-radius: 0px 0px 25px 25px;
+    border: 1px solid #b7bac0;
+    border-top: none;
+    background: #fff;
+    margin-bottom: 50px;
+    @include mobile {
+      padding: 25px 15px;
+      margin-bottom: 25px;
+    }
+    &-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 50px;
+      @include mobile {
+        gap: 25px;
+      }
+    }
+    &-inputs {
+      display: flex;
+      gap: 15px;
+      @include mobile {
+        flex-direction: column;
+      }
+    }
+    &-list {
+      display: flex;
+      width: 50%;
+      padding: 25px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      border-radius: 25px;
+      border: 1px solid #e4e7e9;
+      @include tablet {
+        width: 100%;
+        padding: 15px;
+      }
+      @include mobile {
+        width: 100%;
+        padding: 15px;
+      }
+      &-items {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 80%;
+        @include mobile {
+          width: 90%;
+        }
+      }
+    }
+  }
+}

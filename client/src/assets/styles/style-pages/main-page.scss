@@ -1,0 +1,300 @@
+@import "../vars";
+@import "../mixins";
+
+.welcome {
+  //   padding: 50px 0;
+  &__inner {
+    position: relative;
+    height: 500px;
+    background: url(../../../../public/images/welcome.png) center center/cover
+      no-repeat;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__title {
+    color: #fff;
+
+    text-align: center;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 3.96px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin-top: 100px;
+  }
+
+  &__info {
+    position: absolute;
+    bottom: -100px;
+    left: 50%; // Позиционируем блок по центру
+    transform: translateX(
+      -50%
+    ); // Центрируем блок относительно родительского блока
+    max-width: 500px;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+    text-align: center;
+
+    @include tablet {
+      width: 450px;
+    }
+    @include mobile {
+      bottom: -150px;
+      width: 250px;
+    }
+
+    &-title {
+      font-size: 18px;
+      font-weight: 500;
+      margin-bottom: 15px;
+      @include mobile {
+        font-size: 16px;
+      }
+    }
+
+    &-text {
+      font-size: 16px;
+      font-weight: 400;
+
+      margin-bottom: 25px;
+      span {
+        font-style: italic;
+      }
+      @include mobile {
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+.events {
+  margin-top: calc(110px + 50px);
+  background-color: #eef0f4;
+  padding: 25px 0;
+  @include tablet {
+    margin-top: calc(85px + 50px);
+  }
+  @include mobile {
+    margin-top: calc(160px + 50px);
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    @include mobile {
+      flex-direction: column;
+      gap: 25px;
+    }
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    @include laptop {
+      max-width: 315px;
+    }
+    @include tablet {
+      max-width: 235px;
+    }
+    @include mobile {
+    }
+    &-title {
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+    }
+  }
+}
+
+.places {
+  margin-top: 50px;
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 25px;
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+
+    width: calc(25% - 18.75px);
+
+    @include tablet {
+      width: calc(33% - 15px);
+    }
+    @include mobile {
+      width: calc(50% - 15px);
+    }
+    &-img {
+      width: 100%;
+    }
+    &-title {
+      max-width: 200px;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+    }
+  }
+}
+
+.banner {
+  background-color: #a91f13;
+  margin-top: 50px;
+  &__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
+    @include tablet {
+      padding: 25px 0;
+      justify-content: center;
+    }
+    @include mobile {
+      padding: 25px 0;
+      justify-content: center;
+    }
+    &-img {
+      height: 350px;
+      margin-top: 15px;
+      @include laptop {
+        height: 300px;
+      }
+      @include tablet {
+        display: none;
+      }
+      @include mobile {
+        display: none;
+      }
+    }
+    &-content {
+      display: flex;
+      flex-direction: column;
+      max-width: 580px;
+      @include tablet {
+        flex-direction: row;
+        gap: 25px;
+      }
+      @include mobile {
+        gap: 25px;
+      }
+    }
+  }
+  &__title {
+    color: #fff;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 500;
+    margin-bottom: 15px;
+    max-width: 500px;
+    @include laptop {
+      font-size: 30px;
+      max-width: 450px;
+    }
+    @include tablet {
+      font-size: 24px;
+      max-width: 450px;
+      margin-bottom: 0;
+      text-align: center;
+    }
+    @include mobile {
+      font-size: 24px;
+      margin-bottom: 0;
+      text-align: center;
+    }
+  }
+  &__text {
+    color: #fff;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 300;
+    margin-bottom: 50px;
+    @include laptop {
+      margin-bottom: 25px;
+      font-size: 22px;
+    }
+    @include tablet {
+      display: none;
+    }
+    @include mobile {
+      display: none;
+    }
+  }
+  &__button {
+    align-self: flex-end;
+    @include laptop {
+      align-self: center;
+    }
+    @include tablet {
+      align-self: center;
+    }
+    @include mobile {
+      align-self: center;
+    }
+  }
+}
+
+.advantages {
+  background: #eef0f4;
+  margin-top: 50px;
+  &__inner {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 25px 0;
+    @include tablet {
+      align-items: center;
+    }
+    @include mobile {
+      gap: 15px;
+      justify-content: space-evenly;
+    }
+  }
+  &__item {
+    display: flex;
+    padding: 0 5px;
+    width: calc(25% - 18.75px);
+    justify-content: center;
+    @include mobile {
+      width: calc(50% - 18.75px);
+    }
+    &-text {
+      display: flex;
+      flex-direction: column;
+    }
+    &-title {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 5px;
+      @include tablet {
+        margin-bottom: 0;
+        font-weight: 500;
+      }
+      @include mobile {
+        font-size: 14px;
+        margin-bottom: 0;
+        font-weight: 500;
+      }
+    }
+    &-subtitle {
+      text-align: center;
+      font-size: 14px;
+      font-weight: 400;
+      @include tablet {
+        display: none;
+      }
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+}

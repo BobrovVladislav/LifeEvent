@@ -1,0 +1,115 @@
+@import "./_vars";
+@import "./_reset.scss";
+@import "./_mixins.scss";
+@import "./_fonts.scss";
+
+* {
+  font-family: rubik;
+  outline: none;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex-grow: 1;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+  @include laptop {
+    padding: 0 15px;
+  }
+  @include tablet {
+    padding: 0 10px;
+  }
+  @include mobile {
+    padding: 0 5px;
+  }
+}
+
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol,
+li {
+  color: #222;
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+h2 {
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 3.3px;
+  margin-bottom: 25px;
+  @include mobile {
+    text-align: center;
+  }
+}
+
+.main-button {
+  display: inline-block;
+  padding: 15px 30px;
+  background-color: $primaryColor;
+  color: #fff;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  text-align: center;
+
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  letter-spacing: 1.76px;
+
+  &:hover {
+    background-color: darken($primaryColor, 5%);
+  }
+
+  &:active {
+    background-color: darken($primaryColor, 15%);
+  }
+}
+
+.not-found {
+  display: flex;
+  justify-content: center;
+}
+
+//toast
+/* Стили для десктопных устройств (по умолчанию) */
+.Toastify__toast-container {
+  @include tablet {
+    top: 5em; /* Позиционирование сверху на мобильных устройствах */
+    right: 1em;
+    bottom: initial; /* Сброс позиции снизу */
+    width: 450px;
+  }
+  @include mobile {
+    top: 1em; /* Позиционирование сверху на мобильных устройствах */
+    right: 1em;
+    bottom: initial; /* Сброс позиции снизу */
+    margin: 0 15px;
+    width: 290px;
+  }
+}

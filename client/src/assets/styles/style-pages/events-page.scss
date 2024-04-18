@@ -1,0 +1,174 @@
+@import "../vars";
+@import "../mixins";
+
+.all-events {
+  margin: 35px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin-bottom: 35px;
+    width: 100%;
+  }
+  &__item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    justify-content: space-between;
+
+    padding: 25px;
+    border-radius: 25px;
+    border: 1px solid #b7bac0;
+    @include mobile {
+      padding: 15px;
+    }
+
+    &-main {
+      width: 20%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 15px;
+      text-align: center;
+      @include mobile {
+        width: 35%;
+      }
+    }
+
+    &-name {
+      font-size: 26px;
+      font-style: italic;
+      font-weight: 400;
+      letter-spacing: 2.86px;
+      margin-bottom: 10px;
+
+      @include tablet {
+        font-size: 22px;
+      }
+      @include mobile {
+        font-size: 22px;
+      }
+    }
+    &-date {
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 5px;
+      @include tablet {
+        font-size: 16px;
+      }
+      @include mobile {
+        font-size: 16px;
+      }
+    }
+    &-location {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 400;
+      @include tablet {
+        font-size: 16px;
+      }
+      @include mobile {
+        font-size: 16px;
+      }
+    }
+    &-img {
+      height: 75px;
+      width: auto;
+      margin-bottom: 15px;
+    }
+
+    &-secondary {
+      width: 75%;
+      display: flex;
+      justify-content: space-between;
+      @include mobile {
+        gap: 15px;
+        flex-direction: column;
+        width: 65%;
+      }
+      &-item {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        align-self: center;
+        width: 25%;
+        gap: 20px;
+        @include mobile {
+          width: 100%;
+          gap: 10px;
+        }
+      }
+    }
+    &-title {
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 400;
+      @include tablet {
+        font-size: 20px;
+      }
+      @include mobile {
+        font-size: 18px;
+      }
+    }
+    &-value {
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: 2.86px;
+      &:hover {
+        color: $primaryColor;
+      }
+      @include tablet {
+        font-size: 18px;
+      }
+      @include mobile {
+        font-size: 20px;
+      }
+    }
+    &-link {
+      color: $primaryColor;
+      font-size: 26px;
+      font-weight: 500;
+      letter-spacing: 2.86px;
+      @include tablet {
+        font-size: 20px;
+      }
+      @include mobile {
+        font-size: 20px;
+      }
+    }
+    &-divider {
+      border-bottom: 2px solid #b7bac0;
+      height: 115px; // Вы можете установить высоту по вашему выбору
+      margin: 0 8px;
+      @include mobile {
+        height: 0;
+        width: 115px;
+        margin: 0 auto;
+      }
+    }
+
+    &-icons {
+      top: 20px;
+      right: 20px;
+      position: absolute;
+      display: flex;
+      gap: 15px;
+      @include mobile {
+        top: 15px;
+        right: 15px;
+      }
+    }
+    &-icon {
+      cursor: pointer;
+      &:hover {
+        * {
+          fill: $primaryColor;
+        }
+      }
+    }
+  }
+}

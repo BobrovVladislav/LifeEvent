@@ -1,0 +1,150 @@
+@import "../vars";
+@import "../mixins";
+
+.guests {
+  &__list {
+    &-controls {
+      display: flex;
+      gap: 15px;
+      @include mobile {
+        align-items: center;
+        flex-direction: column;
+      }
+    }
+    &-total {
+      display: flex;
+      align-items: center;
+      color: $primaryColor;
+      font-size: 20px;
+      font-weight: 400;
+      * {
+        fill: $primaryColor;
+      }
+    }
+    &-search {
+      border-radius: 25px;
+      border: 1px solid #b7bac0;
+      padding: 10px 40px 10px 25px;
+      &-group {
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      &-icon {
+        position: absolute;
+        right: 15px;
+        cursor: pointer;
+      }
+    }
+    &-invite {
+      display: flex;
+      align-items: center;
+      padding: 9px;
+      border-radius: 5px;
+      background-color: #7c86a6;
+      transition: background-color 0.3s ease;
+      @include mobile {
+        width: 100%;
+        justify-content: center;
+      }
+      &:hover {
+        background-color: darken(#7c86a6, 5%);
+      }
+
+      &:active {
+        background-color: darken(#7c86a6, 15%);
+      }
+      &-btn {
+        height: 25px;
+        width: 25px;
+        * {
+          fill: white;
+        }
+      }
+    }
+    &-item {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: stretch;
+      &-content {
+        display: flex;
+        align-items: center;
+        flex-grow: 1;
+        padding: 10px 15px;
+        border-radius: 2px;
+        border: 1px solid #e4e7e9;
+        @include mobile {
+          flex-direction: column;
+          text-align: center;
+          gap: 15px;
+          padding: 25px 15px;
+        }
+      }
+      &-icon {
+        width: 45px;
+        height: 45px;
+        margin-right: 15px;
+        * {
+          fill: #222;
+        }
+        @include mobile {
+          margin: 0;
+        }
+      }
+      &-credential {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        flex-grow: 1;
+      }
+      &-fullName {
+        font-size: 16px;
+        font-weight: 500;
+      }
+      &-email {
+        font-size: 14px;
+        color: #1d232c;
+      }
+      &-status {
+        display: flex;
+        width: 135px;
+        border-radius: 25px;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        padding: 5px;
+        &.invited {
+          background: #5a9312;
+        }
+        &.not-invited {
+          background: #bc1305;
+        }
+      }
+      &-button {
+        display: flex;
+        align-items: center;
+        font-size: 24px;
+        padding: 10px 20px;
+        color: white;
+        transition: background-color 0.3s ease;
+        background-color: #aaabab;
+        cursor: pointer;
+        @include mobile {
+          top: 15px;
+          right: 15px;
+          position: absolute;
+          background: inherit;
+          color: $primaryColor;
+          padding: 0;
+        }
+        &:hover {
+          background-color: $primaryColor;
+          * {
+            fill: $primaryColor;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,191 @@
+@import "../vars";
+@import "../mixins";
+
+.modal {
+  display: flex;
+  justify-content: center;
+  @include desktop {
+    margin: 10vh 0;
+  }
+  @include laptop {
+    margin: 10vh 0;
+  }
+  @include tablet {
+    background: #fff;
+    margin-top: 15%;
+    margin-bottom: 25%;
+  }
+
+  @include mobile {
+    background: #fff;
+    margin-top: 15%;
+    margin-bottom: 25%;
+  }
+  &__inner {
+    background: #fff;
+    box-shadow: 0px 8px 40px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    border: 1px solid #e4e7e9;
+    width: 425px;
+    @include mobile {
+      border: none;
+      box-shadow: none;
+    }
+  }
+  &__nav {
+    display: flex;
+  }
+  &__name {
+    color: #191c1f;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    text-align: center;
+    padding: 15px 0;
+
+    box-shadow: 0px -1px 0px 0px #e4e7e9 inset;
+    @include mobile {
+      box-shadow: none;
+    }
+  }
+  &__title {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    color: #77878f;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+    border-bottom: none;
+    padding: 15px 0;
+
+    box-shadow: 0px -1px 0px 0px #e4e7e9 inset;
+    cursor: pointer;
+    @include mobile {
+      box-shadow: none;
+    }
+    &.active {
+      position: relative;
+      color: #191c1f;
+      //тень
+      &::before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $primaryColor;
+        @include mobile {
+          width: 75%;
+          left: auto;
+        }
+      }
+    }
+  }
+  &__content {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+  }
+  &__block-input {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+  }
+  &__label {
+    color: #191c1f;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin-bottom: 5px;
+  }
+  &__input {
+    border-radius: 2px;
+    border: 1px solid #e4e7e9;
+    background: #fff;
+    padding: 10px 15px;
+  }
+  &__select {
+    appearance: none;
+    background-image: url("../../images/IconSelect.svg");
+    background-repeat: no-repeat;
+    background-position: calc(100% - 15px) center;
+  }
+  &__button {
+    display: flex;
+    padding: 0px 24px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 2px;
+    background: $primaryColor;
+    cursor: pointer;
+    margin-top: 15px;
+
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 48px;
+    text-transform: uppercase;
+
+    .icon-arrow {
+      width: 20px;
+      margin-bottom: 2px;
+    }
+    &:hover {
+      background-color: darken($primaryColor, 5%);
+    }
+
+    &:active {
+      background-color: darken($primaryColor, 15%);
+    }
+    &-google {
+      display: flex;
+      padding: 12px 15px;
+      align-items: flex-start;
+      border-radius: 2px;
+      border: 1px solid #e4e7e9;
+      background: #fff;
+      cursor: pointer;
+
+      color: #475156;
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 20px;
+      &-text {
+        flex-grow: 1; /* Это заставит текст занимать всю доступную ширину, выталкивая изображение в начало */
+        text-align: center; /* Выравнивание текста по центру */
+      }
+    }
+  }
+  &__description {
+    color: #475156;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 20px;
+    margin-top: 20px;
+  }
+  &__divider {
+    display: flex;
+    align-items: center;
+    margin: 15px 0;
+    &-line {
+      flex: 1;
+      height: 1px;
+      background-color: #e4e7e9;
+      border: none;
+      margin: 0 10px;
+    }
+    &-text {
+      color: #77878f;
+    }
+  }
+}

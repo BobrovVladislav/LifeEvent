@@ -1,0 +1,138 @@
+@import "../vars";
+@import "../mixins";
+
+.footer {
+  background: #191c1f;
+  &__top {
+    border-bottom: 2px solid #303639;
+  }
+  &__inner-top {
+    display: flex;
+    padding: 25px 0;
+    justify-content: space-between;
+    align-items: flex-start;
+    @include tablet {
+      padding: 20px 0;
+    }
+    @include mobile {
+      padding: 25px 25px;
+      flex-direction: column-reverse;
+      align-items: center;
+    }
+  }
+  &__main {
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    font-size: 16px;
+    @include tablet {
+      max-width: 200px;
+      gap: 15px;
+      font-size: 14px;
+    }
+    @include mobile {
+      margin-top: 15px;
+    }
+    &-logo {
+      color: #fff;
+      font-family: "Monotype Corsiva", sans-serif;
+      font-size: 36px;
+      font-weight: 400;
+      &-color {
+        font-family: "Monotype Corsiva", sans-serif;
+        color: $primaryColor;
+      }
+    }
+    &-subtitle {
+      color: #adb7bc;
+      font-size: 14px;
+      margin-bottom: 5px;
+    }
+
+    &-number {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 24px;
+      color: #ffffff;
+    }
+
+    &-address {
+      color: #adb7bc;
+    }
+    &-email {
+      color: #ffffff;
+    }
+  }
+  &__title {
+    text-transform: uppercase;
+    font-size: 16px;
+    color: #ffffff;
+    margin-bottom: 20px;
+    &:hover {
+      color: $primaryColor;
+      transition: color 0.25s ease-in-out;
+      .footer__title--mobile * {
+        fill: $primaryColor;
+        transition: fill 0.25s ease-in-out;
+      }
+    }
+    &--mobile {
+      display: none;
+      margin-left: 10px;
+      height: 20px;
+      width: 20px;
+    }
+    @include tablet {
+      font-size: 14px;
+      margin-bottom: 15px;
+    }
+    @include mobile {
+      display: flex;
+      &--mobile {
+        display: block;
+        transition: transform 0.1s ease;
+        &.up {
+          transform: rotate(-180deg);
+        }
+
+        &.down {
+          transform: rotate(0deg);
+        }
+      }
+    }
+  }
+  &__link {
+    display: flex;
+    text-transform: uppercase;
+    font-size: 14px;
+    color: #929fa5;
+    margin-bottom: 15px;
+    @include tablet {
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+    &:hover {
+      color: #fff;
+    }
+  }
+  &__inner-bottom {
+    display: flex;
+    padding: 15px 0;
+    justify-content: center;
+    align-items: center;
+    color: #adb7bc;
+    font-size: 14px;
+    @include tablet {
+      padding: 10px 0;
+    }
+    @include mobile {
+      padding: 10px 15px;
+      text-align: center;
+    }
+    p {
+      color: #adb7bc;
+    }
+  }
+}
